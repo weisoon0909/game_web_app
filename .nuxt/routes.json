@@ -1,0 +1,16 @@
+[
+  {
+    "name": "details",
+    "path": "/details",
+    "component": "C:\\\\Users\\\\Soon\\\\Documents\\\\GitHubDesktop\\\\game_web_app\\\\pages\\\\details.vue",
+    "chunkName": "pages/details",
+    "_name": "_5acdca76"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "C:\\\\Users\\\\Soon\\\\Documents\\\\GitHubDesktop\\\\game_web_app\\\\pages\\\\index.vue",
+    "chunkName": "pages/index",
+    "_name": "_701f3006"
+  }
+]
