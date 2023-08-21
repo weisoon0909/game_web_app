@@ -5,11 +5,6 @@
         <b-spinner style="width: 1rem; height: 1rem;" type="grow"></b-spinner>
     </div>
     <div v-else>
-        <b-carousel id="carousel-1" v-model="slide" :interval="4000" controls indicators image-height="108"
-            image-width="108" background="#ababab" style="text-shadow: 1px 1px 2px #333;">
-            <b-carousel-slide v-for="(item, index) in passedObj.short_screenshots" :key="index"
-                :img-src="item.image"></b-carousel-slide>
-        </b-carousel>
         <div class="info-container">
             <b-button v-b-toggle.collapse-desc>Description</b-button>
             <b-collapse id="collapse-desc">
@@ -57,23 +52,25 @@
 <script>
 export default {
     props: {
-        passedObj: { type: Object, default: {} }
+        passedObj: { type: String, default: null }
     },
     data() {
         return {
             slide: 0,
             gameDetails: null,
-            loadingDetails: true
+            loadingDetails: true,
+            getId: null
         }
     },
     mounted() {
+    this.getId = this.$route.params.id 
         this.getDetails()
     },
     methods: {
         async getDetails() {
             this.loadingDetails = true
             await this.$store.dispatch('game/apiGetDetail', {
-                id: this.passedObj.id
+                id: this.getId
             }).then(res => {
                 this.gameDetails = res
             }).catch(err => {

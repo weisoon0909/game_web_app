@@ -37,15 +37,12 @@
                 </div>
             </div>
         </div>
-        <b-modal v-if="selectedDetails" id="modal-detail" v-model="modalVar" :title="selectedDetails.name" hide-footer>
-            <Details :passed-obj="selectedDetails"/>
-        </b-modal>
+        
     </div>
 </template>
 
 <script>
 import { BIcon, BIconSearch, BIconInfoCircle } from 'bootstrap-vue'
-import Details from './details.vue'
 export default {
     data() {
         return {
@@ -68,15 +65,20 @@ export default {
     components: {
         BIcon,
         BIconSearch,
-        BIconInfoCircle,
-        Details
+        BIconInfoCircle
     },
     mounted() {
         this.getApi()
     },
     methods: {
         getDetails(item) {
-            this.selectedDetails = item
+            this.selectedDetails = item.id
+            this.$router.push({
+                name: 'details-id',
+                params: {
+                    id: item.id
+                }
+            })
         },
         changePage(type) {
             if (type === 'prev') {
